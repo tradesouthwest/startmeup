@@ -179,7 +179,8 @@ add_action( 'widgets_init',             'startmeup_widgets_init' );
  */
 function startmeup_single_post_pagination() {
     $args = array(
-        'before'           => '<nav class="post-nav-links" aria-label="' . esc_attr__( 'Post Pages', 'mytheme' ) . '"><span class="post-nav-label">' . __( 'Read On:', 'startmeup' ) . '</span>',
+        'before'           => '<nav class="post-nav-links" aria-label="' . esc_attr__( 'Post Pages', 'mytheme' ) . '">
+			<span class="post-nav-label">' . __( 'Read On:', 'startmeup' ) . '</span>',
         'after'            => '</nav>',
         'link_before'      => '<span class="post-page-number">',
         'link_after'       => '</span>',
@@ -225,7 +226,7 @@ function startmeup_blog_pagination() {
         // Do any custom string manipulation or append extra HTML here
         $pagination .= '<!-- Pagination end -->';
 
-        echo $pagination;
+        echo $pagination; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
 }
 add_action( 'startmeup_excerpt_pagination', 'startmeup_blog_pagination' );
