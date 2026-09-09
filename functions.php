@@ -1,6 +1,6 @@
 <?php
 /** 
- * Functions for theme Hello-Theme
+ * Functions for theme startmeup
  * Sets up theme defaults and registers support for various WordPress features.
  * 
  * @package    ClassicPress
@@ -59,7 +59,7 @@ function startmeup_theme_setup() {
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus(
         array(
-            'primary-menu' => __( 'Primary Main Menu', 'hello-theme' ),
+            'primary-menu' => __( 'Primary Main Menu', 'startmeup' ),
         )
     );
 
@@ -134,7 +134,7 @@ add_action( 'after_setup_theme',        'startmeup_theme_content_width', 0 );
  */
 function startmeup_enqueue_styles() {
 	wp_enqueue_style( 
-		'hello-theme-style', 
+		'startmeup-style', 
 		get_stylesheet_directory_uri() .'/style.css',
 		array(),
 		STARTMEUP_VER
@@ -159,9 +159,9 @@ function startmeup_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( 'Sidebar', 'hello-theme' ),
+			'name'          => __( 'Sidebar', 'startmeup' ),
 			'id'            => 'sidebar-page',
-			'description'   => __( 'Add widgets here to appear in your sidebar.', 'hello-theme' ),
+			'description'   => __( 'Add widgets here to appear in your sidebar.', 'startmeup' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',

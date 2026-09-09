@@ -28,7 +28,7 @@
 
     <a class="skip-link screen-reader-text" aria-label="first content" 
         href="#sitecontent">
-        <?php esc_html_e( 'Skip to content', 'hello-theme' ); ?>
+        <?php esc_html_e( 'Skip to content', 'startmeup' ); ?>
     </a>
         <header class="page-header">
             <div class="site-logo">
@@ -64,7 +64,7 @@
                             class="open-menu" role="button" ></label>
                         </div>
                     </div>
-                    
+
                 <?php
                 wp_nav_menu(
                     array(
