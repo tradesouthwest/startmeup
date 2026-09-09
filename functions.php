@@ -179,7 +179,7 @@ add_action( 'widgets_init',             'startmeup_widgets_init' );
  */
 function startmeup_single_post_pagination() {
     $args = array(
-        'before'           => '<nav class="post-nav-links" aria-label="' . esc_attr__( 'Post Pages', 'mytheme' ) . '">
+        'before'           => '<nav class="post-nav-links" aria-label="' . esc_attr__( 'Post Pages', 'startmeup' ) . '">
 			<span class="post-nav-label">' . __( 'Read On:', 'startmeup' ) . '</span>',
         'after'            => '</nav>',
         'link_before'      => '<span class="post-page-number">',

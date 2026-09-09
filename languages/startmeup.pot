@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: startmeup 1.0.1\n"
 "Report-Msgid-Bugs-To: https://support.tradesouthwest.com\n"
-"POT-Creation-Date: 2023-06-12 10:26-0700\n"
+"POT-Creation-Date: 2026-09-09 13:40-0700\n"
 "PO-Revision-Date: 2023-06-12 10:41-0700\n"
 "Last-Translator: \n"
 "Language-Team: Tradesouthwest\n"
@@ -13,9 +13,61 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-KeywordsList: _;_e;__;_x;esc_html__;esc_html_e;esc_attr__;"
 "esc_attr_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: functions.php:62
+msgid "Primary Main Menu"
+msgstr ""
+
+#: functions.php:162
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:164
+msgid "Add widgets here to appear in your sidebar."
+msgstr ""
+
+#: functions.php:182
+msgid "Post Pages"
+msgstr ""
+
+#: functions.php:183
+msgid "Read On:"
+msgstr ""
+
+#: functions.php:221
+msgid "&laquo; Previous"
+msgstr ""
+
+#: functions.php:222
+msgid "Next &raquo;"
+msgstr ""
+
+#: header.php:31
+msgid "Skip to content"
+msgstr ""
+
+#: index.php:56 single.php:60
+msgid "Categorized as: "
+msgstr ""
+
+#: single.php:53
+msgid "Pages:"
+msgstr ""
+
+#: single.php:59
+msgid "By: "
+msgstr ""
+
+#: single.php:61
+msgid "Keys: "
+msgstr ""
+
+#: single.php:62
+msgid "Added on: "
+msgstr ""
