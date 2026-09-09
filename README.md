@@ -1,4 +1,4 @@
-# Hello Theme
+# Startmeup
 
 Startmeup is part of the Hello Theme project and expands on the very basics of building themes with ClassicPress.
 
