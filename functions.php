@@ -91,7 +91,6 @@ function startmeup_theme_setup() {
 		   'admin-head-callback'   => '',
 		   'admin-preview-callback' => ''
 		) );
-		//add_theme_support( 'custom-logo' );
 }
 
 add_action( 'after_setup_theme', 'startmeup_theme_setup' );
@@ -172,30 +171,64 @@ function startmeup_widgets_init() {
 }
 add_action( 'widgets_init',             'startmeup_widgets_init' );
 
-/** 
- * Attachment render for excerpts
- *
- * @since 1.0.2
- * @return HTML
+/**
+ * Custom single post pagination for ClassicPress.
+ * 
+ * Only displays on psts with `<!--nextpage-->`
+ * @since 1.0
  */
+function startmeup_single_post_pagination() {
+    $args = array(
+        'before'           => '<nav class="post-nav-links" aria-label="' . esc_attr__( 'Post Pages', 'mytheme' ) . '"><span class="post-nav-label">' . __( 'Read On:', 'startmeup' ) . '</span>',
+        'after'            => '</nav>',
+        'link_before'      => '<span class="post-page-number">',
+        'link_after'       => '</span>',
+        'next_or_number'   => 'number', // Use 'next' if you prefer Next/Previous text
+        'separator'        => ' ',
+        'pagelink'         => '%',
+        'echo'             => 1,
+    );
 
-function startmeup_excerpt_attachment_toanchor(){
+    wp_link_pages( $args );
 
-	?>                 
-		<figure class="linked-attachment-container-sm">
-		<a class="exceprtwrap-link"
-		   href ="<?php echo esc_url( get_permalink( get_the_ID() ) ); ?>" 
-		   title="<?php the_title_attribute( 'before=Permalink to: &after=' ); ?>">
-		<?php 
-		the_post_thumbnail( 'startmeup-featured', array( 
-				'itemprop' => 'image', 
-				'class'  => 'startmeup-featured',
-				'alt'  => get_the_title()
-			) 
-		); ?></a>
-		</figure><?php 
 }
-add_action( 'startmeup_excerpt_attachment', 'startmeup_excerpt_attachment_toanchor' );
+
+/**
+ * Main blog archive & index pagination for ClassicPress.
+ */
+add_filter( 'navigation_markup_template', 'startmeup_custom_pagination_template', 10, 2 );
+
+function startmeup_custom_pagination_template( $template, $class ) {
+    // Custom wrapper template
+    return '
+    <nav class="navigation %1$s" aria-label="%4$s">
+        <div class="pagination-wrapper">
+            <h2 class="screen-reader-text">%2$s</h2>
+            <div class="nav-links">%3$s</div>
+        </div>
+    </nav>';
+}
+
+/**
+ * Prev Next links at bottom of single page.
+ * 
+ * @since 1.0
+ */
+function startmeup_blog_pagination() {
+    $pagination = get_the_posts_pagination( array(
+        'mid_size'  => 2,
+        'prev_text' => __( '&laquo; Previous', 'startmeup' ),
+        'next_text' => __( 'Next &raquo;', 'startmeup' ),
+    ) );
+
+    if ( $pagination ) {
+        // Do any custom string manipulation or append extra HTML here
+        $pagination .= '<!-- Pagination end -->';
+
+        echo $pagination;
+    }
+}
+add_action( 'startmeup_excerpt_pagination', 'startmeup_blog_pagination' );
 
 /**
  * Support for logo upload, output. 

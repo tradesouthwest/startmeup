@@ -15,6 +15,8 @@ get_header();
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope 
                 itemtype="https://schema.org/Article">
+            <?php 
+            if ( is_home() || ( is_category() || is_archive() ) ) { ?>
 
             <div class="post-content">
 				<header class="excerpt-header">
@@ -23,49 +25,73 @@ get_header();
                         sprintf( '<h2 class="post-title h4"><a href="%s" rel="bookmark">', 
                             esc_attr( esc_url( get_permalink() ) ) 
                             ), '</a></h2>' ); ?>
+                    
+                    <?php 
+                    if ( has_post_thumbnail() ) { ?>
+                    
+                        <figure class="linked-attachment-container-sm">
+                            <div class="inner-featured-image">
+                            <?php 
+                            the_post_thumbnail( 'startmeup-featured', array( 
+                                'itemprop' => 'image', 
+                                'class'  => 'startmeup-featured',
+                                'alt'  => get_the_title()
+                                ) 
+                            ); ?>
+                            </div>
+                        </figure>
+                    
+                    <?php 
+                    } // end if post thumbnail ?>
 
                 </header>
-					 <div class="inner_content">
+	
+                        <div class="inner_content">
 
-                <?php if ( is_home() || ( is_category() || is_archive() ) ) { ?>
+                            <?php 
+                            the_excerpt(); ?>
+                            
+                            <div class="after-excrpt">
                     
-                    <?php if ( has_post_thumbnail() ) { ?>
-                    
-                    <div class="maxheight-sm">
-
-                        <?php //do_action( 'tinydancer_excerpt_attachment' ); ?>
-thimbnail
-                    </div>
-
-                    <?php the_excerpt(); ?>
-                    <?php } else { ?>
-
-                        <?php the_excerpt(); ?>
-
-                    <?php 
-                    } // Ends if has thumbnail ?>
-
-                    <div class="after-excrpt">
-                    
-                    <p class="after-cats"><span><small><?php esc_html_e('Categorized as: ', 'tinydancer'); ?></small></span> <small><em><?php the_category( ' &bull; ' ); ?></em></small></p>
+                                <p class="after-cats"><span><small><?php esc_html_e('Categorized as: ', 'tinydancer'); ?></small></span> <small><em><?php the_category( ' &bull; ' ); ?></em></small>
+                                 / <small><em class="excerpt_footer-date">
+                                <?php printf( esc_attr( get_the_date() ) ); ?></em></small></p>
                
-                    </div>
-                    
-                    <?php } else { ?>
+                            </div>
+
+                <?php 
+                } else {  // display full content if not archive etc. 
+                ?>
                 
                     <?php the_content( '', true ); ?>
                 
                 <?php 
-                } // Ends is blog or archive ?>
+                } // Ends is blog or archive 
+                ?>
 
                 </div>
 			</div>
+
 		</article>
 
 		<?php 
         endwhile; ?>
-			<?php 
-			endif; ?>
+
+            <?php 
+            // Blog posts pagination goes AFTER the loop ends
+            if ( function_exists( 'startmeup_blog_pagination' ) ) {
+                startmeup_blog_pagination();
+            } ?>
+
+        <?php else : ?>
+        <div class="post-content">
+            
+            <?php echo esc_url( home_url('/') ); ?>
+        
+        </div>
+
+        <?php 
+        endif; ?>
 
 	</section>
         <aside class="blog-sidebar">

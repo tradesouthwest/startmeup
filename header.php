@@ -40,12 +40,31 @@
            
             <?php 
                 endif; ?>
+
+                <div class="page-header-inner">
+                    <div class="hgroup-header">
+                        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                        <div class="site-description">
+                            
+                            <?php echo esc_html( get_bloginfo( 'description', 'display' ) ); ?>
+                    
+                        </div>
+                    </div>
+                </div>
             </div>
         <!-- nav or top section can go here -->
             <nav class="page-nav-wrapper" aria-label="Primary" style="[for toggle]">
                 <div id="page_nav" class="nav-wrapper">
 
-                <details><summary style="padding:1.67em;">|||</summary>
+                    <div class="nav-button-wrapper">
+                        <div id="nav_button" class="nav-button-top">
+                            <label><span>|</span><span>|</span><span>|</span>
+                            <input type="hidden" name="open_menu" class="open-menu" value="false">
+                            <input id="open_menu" type="checkbox" name="open_menu" 
+                            class="open-menu" role="button" ></label>
+                        </div>
+                    </div>
+                    
                 <?php
                 wp_nav_menu(
                     array(
