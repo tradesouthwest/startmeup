@@ -22,7 +22,7 @@ URI:          https://github.com/tradesouthwest/startmeup
 
 ## Description: 
 
-Startmeup is part of the Hello Theme project and expands on the very basics of building themes with ClassicPress. Uses monospace for headings. Featured images on pages and posts. Has logo image upload in customizer. Great for a blog.
+Startmeup is part of the Hello Theme project and expands on the very basics of building themes with ClassicPress. Uses monospace for headings. Featured images on pages and posts. Has logo image upload in customizer. Great for a blog. Blog can be set to show single posts in one column or set posts to show as three columns in customizer.
 
 Demo @ https://themes.classicpress-themes.com/startmeup/
 

@@ -4,7 +4,7 @@ Theme URI:    https://themes.classicpress-themes.com/startmeup/
 Author:       Your name
 Author URI:   https://tradesouthwest.com
 Contributors: 
-Description:  Startmeup is part of the Hello Theme project and expands on the very basics of building themes with ClassicPress. Uses monospace for headings. Has logo image upload in customizer.
+Description:  Startmeup is part of the Hello Theme project and expands on the very basics of building themes with ClassicPress. Uses monospace for headings. Featured images on pages and posts. Has logo image upload in customizer. Great for a blog. Blog can be set to show single posts in one column or set posts to show as three columns in customizer.
 Version:      1.0.0
 Requires PHP: 7.4
 Tested up to: 2.1
@@ -179,6 +179,7 @@ Themename is distributed under the terms of the GNU GPL
   .hgroup-header {
     display: flex;
     flex-direction: column;
+    align-content: center;
     padding: 1em;
     font-family: monospace;
   }
@@ -211,10 +212,7 @@ body.blog-layout-single-column .index-page-body article.post {
     width: 100%;
     margin-bottom: 2rem;
 }
-body.blog-layout-three-columns .index-page-body article.post:last-child {
-  clear: both;
-  display: block;
-}
+
 /* 3-Column Grid Layout */
 @media (min-width: 768px) {
     body.blog-layout-three-columns .index-page-body {
@@ -261,8 +259,8 @@ body.blog-layout-three-columns .index-page-body article.post:last-child {
   }
   
   .page-nav .menu-item-has-children a:after {
-    content: "^";
-    transform: rotate(180deg);
+    content: "\027A4";
+    transform: rotate(90deg);
     position: relative;
     left: .5em;
   }
@@ -562,12 +560,21 @@ body.blog-layout-three-columns .index-page-body article.post:last-child {
   
   /* Blockquotes & Lists */
   blockquote {
-    border: 4px dotted #ccc;
+    margin-left: 2em;
     padding-left: .825em;
     padding-right: .825em;
     border-radius: 0 18px;
   }
   
+  blockquote:before {
+    content: "\007c";
+    font-size: 5rem;
+    position: absolute;
+    left: 7%;
+    margin-top: -.222em;
+    color: #999;
+  }
+
   cite {
     width: 100%;
     display: block;
