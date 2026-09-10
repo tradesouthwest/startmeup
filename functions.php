@@ -40,7 +40,8 @@ function startmeup_theme_setup() {
      * Not used in ClassicPress > 2.0 
      * to output valid HTML5.
      */ 
-    if ( function_exists( 'is_classicpress' ) && version_compare( '2.0', $cp_version, '<' ) ) {
+if ( version_compare( function_exists( 'classicpress_version' ) 
+    ? classicpress_version() : '0', '2', '<=' ) ) {
         add_theme_support( 'html5', array(
             'search-form',
             'comment-form',
@@ -139,7 +140,7 @@ function startmeup_enqueue_styles() {
 		array(),
 		STARTMEUP_VER
 	);
-    
+
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 
 			'comment-reply' 
@@ -263,4 +264,13 @@ function startmeup_theme_custom_logo() {
  */
 
 /* Adding files here to apply to the following functions below */
-//require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/includes/customizer.php';
+
+function startmeup_blog_body_classes( $classes ) {
+    if ( is_home() || is_archive() || is_search() ) {
+        $layout = get_theme_mod( 'startmeup_blog_layout', 'single-column' );
+        $classes[] = 'blog-layout-' . sanitize_html_class( $layout );
+    }
+    return $classes;
+}
+add_filter( 'body_class', 'startmeup_blog_body_classes' );

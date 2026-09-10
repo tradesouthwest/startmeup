@@ -205,6 +205,30 @@ Themename is distributed under the terms of the GNU GPL
     margin-top: 2em;
   }
   
+  /* Base styles */
+  /* Single Column (Stacked) Default */
+body.blog-layout-single-column .index-page-body article.post {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+body.blog-layout-three-columns .index-page-body article.post:last-child {
+  clear: both;
+  display: block;
+}
+/* 3-Column Grid Layout */
+@media (min-width: 768px) {
+    body.blog-layout-three-columns .index-page-body {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    body.blog-layout-three-columns .index-page-body article.post {
+        width: 100%;
+        margin-bottom: 0;
+    }
+}
+
   /* ==========================================================================
      3.0 - Navigation & Pagination
      ========================================================================== */
@@ -236,14 +260,21 @@ Themename is distributed under the terms of the GNU GPL
     padding: 0;
   }
   
-  .page-nav .menu-item-has-children {
-    border-left: 2px dotted #ccc;
+  .page-nav .menu-item-has-children a:after {
+    content: "^";
+    transform: rotate(180deg);
+    position: relative;
+    left: .5em;
   }
   
   .page-nav .menu-item-has-children .sub-menu {
     margin-left: -2.222em;
     top: 35px;
     position: absolute;
+  }
+
+  .page-nav .menu-item-has-children .sub-menu a:after {
+    content: "";
   }
   
   .page-nav a {
